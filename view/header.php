@@ -14,10 +14,12 @@
 
 	<body>
 	<!-- navigation -->
-		<div role='tabpanel'>
+		<div class="navbar navbar-default" role="navigation">
+		<div class="navbar-header">
 			<a href='index.php' class='navbar-brand'>eSubmit</a>
+		</div>
 			<ul class='nav nav-tabs' role='tablist'>
-				<li role="presentation">
+				<li role="presentation" class="active">
 					<a href="index.php" role="tab">Home</a>
 				</li>
 				<li role="presentation">
@@ -28,4 +30,5 @@
 				</li>
 
 			</ul>
+		
 		</div>
