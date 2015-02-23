@@ -11,13 +11,14 @@
 			<th colspan="2">Action</th>
 		</thead>
 		<tbody>
+		<?php foreach($files as $index => $file): ?>
 			<tr>
-				<td>1</td>
-				<td>wahaha.cpp</td>
-				<td>nyahaha</td>
-				<td>shet</td>
-				<td>shet</td>
-				<td>shet</td>
+				<td><?php echo $index+1; ?></td>
+				<td><?php echo $file['file_name']; ?></td>
+				<td><?php echo $file['schedule']; ?></td>
+				<td><?php echo $file['date_submitted']; ?></td>
+				<td><?php echo $file['description']; ?></td>
+				<td><?php echo $file['remarks']; ?></td>
 				<td>
 					<a href="#">Resubmit</a>
 				</td>
@@ -25,6 +26,7 @@
 					<a href="#">Delete</a>
 				</td>
 			</tr>
+		<?php endforeach; ?>
 		</tbody>
 	</table>
 </div>
