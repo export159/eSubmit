@@ -20,7 +20,7 @@ class Student{
 		$id = $this->model_student->login($student_id);
 
 		if($id != null){
-			echo 'success'.$id;
+			$_SESSION['id'] = $id;
 		}
 	}
 }

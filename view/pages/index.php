@@ -1,1 +1,1 @@
-teacher's announcements here!!
+teacher's announcements here

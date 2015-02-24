@@ -24,23 +24,32 @@
 				<li role="presentation" class="active">
 					<a href="index.php" role="tab">Home</a>
 				</li>
+				<?php if($session != null): ?>
 				<li role="presentation">
 					<a href="upload.php" role="tab">Submit files</a>
 				</li>
 				<li role="presentation">
 					<a href="view.php" role="tab">Submitted files</a>
 				</li>
+				<?php endif; ?>
 			</ul>
 			<ul class="nav nav-tabs navbar-right">
+			<?php if($session == null): ?>
 				<li>
 					<a href="#" id="btn-login" data-toggle="modal">Login</a>
 				</li>
 				<li>
 					<a href="#" id="btn-signup" data-toggle="modal">Signup</a>
 				</li>
+			<?php else: ?>
+				<li>
+					<a href="/esubmit/controller/student?action=logout" id="btn-signup" data-toggle="modal">Logout</a>
+				</li>
+			<?php endif; ?>
 			</ul>
 		</div>
 		</div>
+		<?php if($session == null): ?>
 		<!-- modals -->
 		<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<form class="form form-horizontal" action="../controller/student.php?action=login" method="POST">
@@ -119,3 +128,4 @@
   			</div>
   		</form>
 		</div>
+		<?php endif; ?>
