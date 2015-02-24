@@ -4,7 +4,7 @@ new Index();
 class Index{
 	public function __construct(){
 		session_start();
-		if(!isset($_SESSION)){
+		if(!isset($_SESSION['id'])){
 			$_SESSION['id'] = null;
 		}
 		$this->index();

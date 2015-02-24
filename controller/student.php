@@ -8,12 +8,17 @@ class Student{
 	public function __construct(){
 		session_start();
 		$this->model_student = new Model_student();
-		if($_GET['action'] == 'login')
-			$this->login();
-		else if($_GET['action'] == 'signup')
-			$this->signup();
-		else if($_GET['action'] == 'logout')
-			$this->logout();
+		if($_SESSION['id'] == "" || $_GET['action'] == 'logout'){
+			if($_GET['action'] == 'login')
+				$this->login();
+			else if($_GET['action'] == 'signup')
+				$this->signup();
+			else if($_GET['action'] == 'logout')
+				$this->logout();
+		}else{
+			echo $_SESSION['id'];
+			echo 'wahaha';
+		}
 	}
 
 	function login(){
@@ -24,10 +29,11 @@ class Student{
 		if($id != null){
 			$_SESSION['id'] = $id;
 		}
+		header("location: index.php");
 	}
 
 	function logout(){
-		session_destroy('id');
+		session_unset('id');
 		header("location: index.php");
 	}
 }
