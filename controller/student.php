@@ -12,6 +12,8 @@ class Student{
 			$this->login();
 		else if($_GET['action'] == 'signup')
 			$this->signup();
+		else if($_GET['action'] == 'logout')
+			$this->logout();
 	}
 
 	function login(){
@@ -22,5 +24,10 @@ class Student{
 		if($id != null){
 			$_SESSION['id'] = $id;
 		}
+	}
+
+	function logout(){
+		session_destroy('id');
+		header("location: index.php");
 	}
 }

@@ -43,7 +43,7 @@
 				</li>
 			<?php else: ?>
 				<li>
-					<a href="/esubmit/controller/student?action=logout" id="btn-signup" data-toggle="modal">Logout</a>
+					<a href="/esubmit/controller/student.php?action=logout" id="btn-signup" data-toggle="modal">Logout</a>
 				</li>
 			<?php endif; ?>
 			</ul>
