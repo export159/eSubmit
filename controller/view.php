@@ -19,9 +19,9 @@ class View{
 
 	function index(){
 		$session = $_SESSION['id'];
-		$files = $this->model_files->view_submitted_files();
+		$files = $this->model_files->view_submitted_files($session);
 		include '../view/header.php';
 		include '../view/pages/view.php';
-		include '../view/footer.php';		
+		include '../view/footer.php';
 	}
 }

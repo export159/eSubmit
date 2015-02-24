@@ -7,11 +7,12 @@ class Model_files extends PDO_Connector{
 		$this->connect();
 	}
 
-	function view_submitted_files(){
+	function view_submitted_files($student_no){
 		$result;
 		$counter = 0;
 		try{
-			$stmt = $this->dbh->prepare('SELECT file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files WHERE student_id = 1');
+			$stmt = $this->dbh->prepare('SELECT file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files WHERE student_id = ?');
+			$stmt->bindParam(1, $student_no);
 			$stmt->execute();
 
 			while($rs = $stmt->fetch()){

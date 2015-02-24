@@ -2,11 +2,9 @@
 require_once '../includes/PDO_Connector.php';
 
 class Model_student extends PDO_Connector{
-	public function __construct(){
-		$this->connect();
-	}
 
 	function login($student_id){
+		$this->connect();
 		$id;
 		try{
 			$sql = 'SELECT student_no FROM tbl_student WHERE student_no = ?';
@@ -20,8 +18,26 @@ class Model_student extends PDO_Connector{
 		}catch(Exception $e){
 			print_r($e);
 		}
-
 		return $id;
+
+		$this->close();
+	}
+
+	function add_student($data){
+		$this->connect();
+		try{
+			$sql = 'INSERT INTO tbl_student VALUES(0,?,?,?,?)';
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->bindParam(1, $data['student_number']);
+			$stmt->bindParam(2, $data['first_name']);
+			$stmt->bindParam(3, $data['middle_name']);
+			$stmt->bindParam(4, $data['last_name']);
+			$stmt->execute();
+			
+		}catch(PDOException $e){
+			print_r($e);
+		}
+		return true;
 
 		$this->close();
 	}

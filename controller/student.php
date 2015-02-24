@@ -31,6 +31,20 @@ class Student{
 		}
 		header("location: index.php");
 	}
+	function signup(){
+		$credentials = $_POST;
+
+		if($this->model_student->add_student($credentials)){
+			$id = $this->model_student->login($credentials['student_number']);
+
+			if($id != null){
+				$_SESSION['id'] = $id;
+			}
+		}
+
+		header("location: index.php");	
+
+	}
 
 	function logout(){
 		session_unset('id');

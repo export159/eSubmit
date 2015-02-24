@@ -96,22 +96,22 @@
       				<div class="modal-body">
       					<div class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" class="form-control" id="f-student-number" placeholder="Enter student no.">
+    							<input type="text" name="student_number" class="form-control" id="f-student-number" placeholder="Enter student no.">
  
     						</div>
   						</div><div class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" class="form-control" id="f-fname" placeholder="Enter first name">
+    							<input type="text" name="first_name" class="form-control" id="f-fname" placeholder="Enter first name">
  
     						</div>
   						</div><div class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" class="form-control" id="f-mname" placeholder="Enter middle name">
+    							<input type="text" name="middle_name" class="form-control" id="f-mname" placeholder="Enter middle name">
  
     						</div>
   						</div><div class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" class="form-control" id="f-lname" placeholder="Enter last name">
+    							<input type="text" name="last_name" class="form-control" id="f-lname" placeholder="Enter last name">
  
     						</div>
   						</div>
