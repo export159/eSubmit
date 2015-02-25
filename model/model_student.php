@@ -42,4 +42,27 @@ class Model_student extends PDO_Connector{
 		$this->close();
 	}
 
+	function getStudent($student_id){
+		$this->connect();
+		$result = null;
+		try{
+			$sql = 'SELECT first_name, middle_name, last_name FROM tbl_student WHERE student_no = ?';
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->bindParam(1, $student_id);
+			$stmt->execute();
+
+			while($rs = $stmt->fetch()){
+				$result['first_name'] = $rs['first_name'];
+				$result['middle_name'] = $rs['middle_name'];
+				$result['last_name'] = $rs['last_name'];
+			}
+		}catch(PDOException $e){
+			print_r($e);
+		}
+
+		return $result;
+
+		$this->close();
+	}
+
 }

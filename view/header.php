@@ -21,14 +21,14 @@
 		</div>
 		<div class="collapse navbar-collapse">
 			<ul class='nav nav-tabs navbar-left'>
-				<li role="presentation" class="active">
+				<li id="tab-home" role="presentation">
 					<a href="index.php" role="tab">Home</a>
 				</li>
 				<?php if($session != null): ?>
-				<li role="presentation">
+				<li id="tab-submit" role="presentation">
 					<a href="upload.php" role="tab">Submit files</a>
 				</li>
-				<li role="presentation">
+				<li id="tab-view" role="presentation">
 					<a href="view.php" role="tab">Submitted files</a>
 				</li>
 				<?php endif; ?>
@@ -99,7 +99,8 @@
     							<input type="text" name="student_number" class="form-control" id="f-student-number" placeholder="Enter student no.">
  
     						</div>
-  						</div><div class="form-group">
+  						</div>
+              <div class="form-group">
     						<div class="col-sm-10">
     							<input type="text" name="first_name" class="form-control" id="f-fname" placeholder="Enter first name">
  
@@ -109,7 +110,8 @@
     							<input type="text" name="middle_name" class="form-control" id="f-mname" placeholder="Enter middle name">
  
     						</div>
-  						</div><div class="form-group">
+  						</div>
+              <div class="form-group">
     						<div class="col-sm-10">
     							<input type="text" name="last_name" class="form-control" id="f-lname" placeholder="Enter last name">
  

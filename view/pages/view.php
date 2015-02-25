@@ -14,12 +14,12 @@
 		<tbody>
 		<?php foreach($files as $index => $file): ?>
 			<tr>
-				<td><?php echo $index+1; ?></td>
-				<td><?php echo $file['file_name']; ?></td>
-				<td><?php echo $file['schedule']; ?></td>
-				<td><?php echo $file['date_submitted']; ?></td>
-				<td><?php echo $file['description']; ?></td>
-				<td><?php echo $file['remarks']; ?></td>
+				<td><?php echo htmlentities($index+1); ?></td>
+				<td><?php echo htmlentities($file['file_name']); ?></td>
+				<td><?php echo htmlentities($file['schedule']); ?></td>
+				<td><?php echo htmlentities($file['date_submitted']); ?></td>
+				<td><?php echo htmlentities($file['description']); ?></td>
+				<td><?php echo htmlentities($file['remarks']); ?></td>
 				<td>
 					<a href="#">Resubmit</a>
 				</td>

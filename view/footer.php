@@ -13,6 +13,23 @@
 			$('#modal-signup').modal('toggle')
 		});
 		//---- end ------------------//
+
+		// ---- navbar activator ---- //
+		<?php 
+			$break = array();
+			$url = $_SERVER["REQUEST_URI"];
+			$break = explode('/', $url);
+			echo "var current_controller = '$break[3]';";
+		?>
+
+		if(current_controller == 'index.php'){
+			$('#tab-home').addClass('active');
+		}else if(current_controller == 'upload.php'){
+			$('#tab-submit').addClass('active');
+		}else if(current_controller == 'view.php'){
+			$('#tab-view').addClass('active');
+		}
+		// ---- end ------------------//
 	});
 </script>
 </html>
