@@ -8,7 +8,7 @@ class Model_files extends PDO_Connector{
 	}
 
 	function view_submitted_files($student_no){
-		$result;
+		$result = null;
 		$counter = 0;
 		try{
 			$stmt = $this->dbh->prepare('SELECT file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files WHERE student_id = ?');
@@ -24,6 +24,7 @@ class Model_files extends PDO_Connector{
 
 				$counter++;
 			}
+
 
 		}catch(Exception $e){
 			print_r($e);

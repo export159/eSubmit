@@ -1,5 +1,6 @@
 <div class='container table-responsive'>
 	<h2>My submitted files</h2>
+	<?php if($files != null): ?>
 	<table class='table table-bordered table-hover'>
 		<thead>
 			<th>#</th>
@@ -29,4 +30,7 @@
 		<?php endforeach; ?>
 		</tbody>
 	</table>
+	<?php else: ?>
+		<div class="alert alert-info" role="alert"><i class="glyphicon glyphicon-info-sign"></i> You have no submitted files!</div>
+	<?php endif; ?>
 </div>
