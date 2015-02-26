@@ -23,13 +23,14 @@ class Student{
 
 	function login(){
 		$student_id = $_POST['student_number'];
-
+		$id = null;
 		$id = $this->model_student->login($student_id);
 
 		if($id != null){
 			$_SESSION['id'] = $id;
 		}
-		header("location: index.php");
+		echo $id;
+		//header("location: index.php");
 	}
 	function signup(){
 		$credentials = $_POST;

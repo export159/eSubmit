@@ -52,7 +52,7 @@
 		<?php if($session == null): ?>
 		<!-- modals -->
 		<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<form class="form form-horizontal" action="../controller/student.php?action=login" method="POST">
+		<form class="form form-horizontal" action="../controller/student.php?action=login" method="POST" onsubmit="login(this); return false;">
   			<div class="modal-dialog modal-sm">
     			<div class="modal-content">
     				<div class="modal-header">
@@ -63,9 +63,12 @@
         				<h4 class="modal-title" id="myModalLabel">Login</h4>
   					</div>
       				<div class="modal-body">
-      					<div class="form-group">
+              <span id="container-warning" class="bg-danger">
+               
+              </span>
+      					<div id="f-student-number" class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" name="student_number" class="form-control" id="f-student-number" placeholder="Enter your student no.">
+    							<input type="text" name="student_number" class="form-control" placeholder="Enter your student no.">
     						</div>
   						</div>
   		
@@ -73,7 +76,7 @@
       				<div class="modal-footer">
       					<div class="form-group">
     						<div class="col-sm-offset-2 col-sm-10">
-      							<button type="submit" class="btn btn-default">Login</button>
+      							<button id="btn-login" type="submit" class="btn btn-default" data-loading-text="Logging in ...." autocomplete="off">Login</button>
     						</div>
   						</div>
       				</div>

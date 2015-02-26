@@ -5,7 +5,7 @@ class Model_student extends PDO_Connector{
 
 	function login($student_id){
 		$this->connect();
-		$id;
+		$id = null;
 		try{
 			$sql = 'SELECT student_no FROM tbl_student WHERE student_no = ?';
 			$stmt = $this->dbh->prepare($sql);
