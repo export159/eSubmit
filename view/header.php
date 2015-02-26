@@ -86,7 +86,7 @@
 		</div>
 
 		<div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<form class="form form-horizontal" action="../controller/student.php?action=signup" method="POST">
+		<form class="form form-horizontal" action="../controller/student.php?action=signup" method="POST" onsubmit="signup(this); return false;">
   			<div class="modal-dialog modal-sm">
     			<div class="modal-content">
     				<div class="modal-header">
@@ -97,26 +97,30 @@
         				<h4 class="modal-title" id="myModalLabel">Signup</h4>
   					</div>
       				<div class="modal-body">
-      					<div class="form-group">
+                <span id="container-warning" class="bg-danger">
+               
+                </span>
+      					<div id="f-student-number" class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" name="student_number" class="form-control" id="f-student-number" placeholder="Enter student no.">
+    							<input type="text" name="student_number" class="form-control" placeholder="Enter student no.">
  
     						</div>
   						</div>
               <div class="form-group">
-    						<div class="col-sm-10">
-    							<input type="text" name="first_name" class="form-control" id="f-fname" placeholder="Enter first name">
- 
-    						</div>
-  						</div><div class="form-group">
-    						<div class="col-sm-10">
-    							<input type="text" name="middle_name" class="form-control" id="f-mname" placeholder="Enter middle name">
+    						<div id="f-fname" class="col-sm-10">
+    							<input type="text" name="first_name" class="form-control" placeholder="Enter first name">
  
     						</div>
   						</div>
-              <div class="form-group">
+              <div id="f-mname" class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" name="last_name" class="form-control" id="f-lname" placeholder="Enter last name">
+    							<input type="text" name="middle_name" class="form-control" placeholder="Enter middle name">
+ 
+    						</div>
+  						</div>
+              <div id="f-lname" class="form-group">
+    						<div class="col-sm-10">
+    							<input type="text" name="last_name" class="form-control" placeholder="Enter last name">
  
     						</div>
   						</div>
@@ -125,7 +129,7 @@
       				<div class="modal-footer">
       					<div class="form-group">
     						<div class="col-sm-offset-2 col-sm-10">
-      							<button type="submit" class="btn btn-default">Signup</button>
+      							<button type="submit" class="btn btn-default" data-loading-text="Signing up ...." autocomplete="off">Signup</button>
     						</div>
   						</div>
       				</div>

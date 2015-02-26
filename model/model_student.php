@@ -2,9 +2,10 @@
 require_once '../includes/PDO_Connector.php';
 
 class Model_student extends PDO_Connector{
-
-	function login($student_id){
+	public function __construct(){
 		$this->connect();
+	}
+	function login($student_id){
 		$id = null;
 		try{
 			$sql = 'SELECT student_no FROM tbl_student WHERE student_no = ?';
@@ -24,26 +25,30 @@ class Model_student extends PDO_Connector{
 	}
 
 	function add_student($data){
-		$this->connect();
 		try{
-			$sql = 'INSERT INTO tbl_student VALUES(0,?,?,?,?)';
-			$stmt = $this->dbh->prepare($sql);
-			$stmt->bindParam(1, $data['student_number']);
-			$stmt->bindParam(2, $data['first_name']);
-			$stmt->bindParam(3, $data['middle_name']);
-			$stmt->bindParam(4, $data['last_name']);
-			$stmt->execute();
+			if($this->getStudent($data['student_number']) == null){
+				$sql = 'INSERT INTO tbl_student VALUES(0,?,?,?,?)';
+				$stmt = $this->dbh->prepare($sql);
+				$stmt->bindParam(1, $data['student_number']);
+				$stmt->bindParam(2, $data['first_name']);
+				$stmt->bindParam(3, $data['middle_name']);
+				$stmt->bindParam(4, $data['last_name']);
+				$stmt->execute();
+
+				return true;
+			}else{
+				return false;
+			}
 			
 		}catch(PDOException $e){
 			print_r($e);
 		}
-		return true;
+		
 
 		$this->close();
 	}
 
 	function getStudent($student_id){
-		$this->connect();
 		$result = null;
 		try{
 			$sql = 'SELECT first_name, middle_name, last_name FROM tbl_student WHERE student_no = ?';

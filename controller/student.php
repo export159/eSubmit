@@ -41,9 +41,10 @@ class Student{
 			if($id != null){
 				$_SESSION['id'] = $id;
 			}
+			echo true;
+		}else{
+			echo false;
 		}
-
-		header("location: index.php");	
 
 	}
 
