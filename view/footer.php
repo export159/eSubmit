@@ -6,6 +6,7 @@
 <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
 <!-- user defined javascripts -->
 <script type="text/javascript" src="../public/js/validations.js"></script>
+<script type="text/javascript" src="../public/js/view.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 		//---- model controllers ----//
