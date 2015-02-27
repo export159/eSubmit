@@ -22,28 +22,47 @@
 		<div class="collapse navbar-collapse">
 			<ul class='nav nav-tabs navbar-left'>
 				<li id="tab-home" role="presentation">
-					<a href="index.php" role="tab">Home</a>
+					<a href="index.php" role="tab">
+            <i class="glyphicon glyphicon-home"></i> 
+            Home
+          </a>
 				</li>
 				<?php if($session != null): ?>
 				<li id="tab-submit" role="presentation">
-					<a href="upload.php" role="tab">Submit files</a>
+					<a href="upload.php" role="tab">
+            <i class="glyphicon glyphicon-upload"></i> 
+            Submit files
+          </a>
 				</li>
 				<li id="tab-view" role="presentation">
-					<a href="view.php" role="tab">Submitted files</a>
+					<a href="view.php" role="tab">
+            <i class="glyphicon glyphicon-list"></i> 
+            Submitted files
+          </a>
 				</li>
 				<?php endif; ?>
 			</ul>
 			<ul class="nav nav-tabs navbar-right">
 			<?php if($session == null): ?>
 				<li>
-					<a href="#" id="btn-login" data-toggle="modal">Login</a>
+					<a href="#" id="btn-login" data-toggle="modal">
+            <i class="glyphicon glyphicon-log-in"></i> 
+            Login
+          </a>
 				</li>
 				<li>
-					<a href="#" id="btn-signup" data-toggle="modal">Signup</a>
+					<a href="#" id="btn-signup" data-toggle="modal">
+            <i class="glyphicon glyphicon-edit"></i> 
+            Signup
+          </a>
 				</li>
 			<?php else: ?>
 				<li>
-					<a href="/esubmit/controller/student.php?action=logout" id="btn-signup" data-toggle="modal">Logout</a>
+          
+					<a href="/esubmit/controller/student.php?action=logout" id="btn-signup" data-toggle="modal">
+            <i class="glyphicon glyphicon-log-out"></i> 
+            Logout
+          </a>
 				</li>
 			<?php endif; ?>
 			</ul>

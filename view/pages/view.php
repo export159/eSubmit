@@ -24,7 +24,7 @@
 					<a href="#">Resubmit</a>
 				</td>
 				<td>
-					<a href="#">Delete</a>
+					<a href="#" onclick="delete_file(<?php echo htmlentities($file['id']); ?>);">Delete</a>
 				</td>
 			</tr>
 		<?php endforeach; ?>

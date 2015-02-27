@@ -11,11 +11,12 @@ class Model_files extends PDO_Connector{
 		$result = null;
 		$counter = 0;
 		try{
-			$stmt = $this->dbh->prepare('SELECT file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files WHERE student_id = ? ORDER BY id desc');
+			$stmt = $this->dbh->prepare('SELECT id, file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files WHERE student_id = ? ORDER BY id desc');
 			$stmt->bindParam(1, $student_no);
 			$stmt->execute();
 
 			while($rs = $stmt->fetch()){
+				$result[$counter]['id'] = $rs['id'];
 				$result[$counter]['file_name'] = $rs['file_name'];
 				$result[$counter]['schedule'] = $rs['schedule'];
 				$result[$counter]['date_submitted'] = $rs['date_submitted'];
@@ -33,6 +34,20 @@ class Model_files extends PDO_Connector{
 		
 		$this->close();
 	}
+	function get_file_where_id($id){
+		try{
+			$sql = 'SELECT destination FROM tbl_submitted_files WHERE id = ?';
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->bindParam(1, $id);
+			$stmt->execute();
+
+			$rs = $stmt->fetch();
+
+			return $rs['destination'];
+		}catch(PDOExeption $e){
+			print_r($e);
+		}
+	}
 
 	function upload_file($info){
 		try{
@@ -47,6 +62,17 @@ class Model_files extends PDO_Connector{
 			$stmt->bindParam(6, $info['description']);
 			$stmt->execute();
 		}catch(PDOExeption $e){
+			print_r($e);
+		}
+	}
+
+	function remove_file($id){
+		try{
+			$sql = 'DELETE FROM tbl_submitted_files WHERE id = ?';
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->bindParam(1, $id);
+			$stmt->execute();
+		}catch(PDOException $e){
 			print_r($e);
 		}
 	}

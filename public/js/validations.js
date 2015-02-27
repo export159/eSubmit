@@ -1,11 +1,6 @@
+//--- login/signup validations ---//
 function login(form){
 	student_id = $(form).find('input[name="student_number"]').val();
-	
-   	
-
-    	// business logic...
-    
-  	
 
 	if(student_id == ""){
 		$(form).find('#container-warning').html('<p class="text-danger">Student number is empty!</p>');
@@ -89,4 +84,22 @@ function signup(form){
 		$(form).find('button').button('reset');
 	}
 
+}
+
+//--- file delete validations ---//
+function delete_file(id){
+
+	if(confirm('Are you sure you want to delete this file?')){
+		$.ajax({
+			url: '/esubmit/controller/upload.php?action=delete',
+			data:{
+				'id' : id
+			},
+			type: 'GET',
+			success: function(e){
+				window.location.reload(true);
+				
+			}
+		});
+	}
 }
