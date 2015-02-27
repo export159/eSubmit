@@ -16,6 +16,8 @@ class Upload{
 				$this->index();
 			}else if($_GET['action'] == 'submit'){
 				$this->submit();
+			}else if($_GET['action'] == 'resubmit'){
+				$this->resubmit();
 			}else if($_GET['action'] == 'delete'){
 				$this->delete();
 			}
@@ -41,6 +43,19 @@ class Upload{
 		
 		$this->model_files->upload_file($info);
 		header("location: upload.php");;
+	}
+
+	function resubmit(){
+		$info['student_id'] = $_SESSION['id'];
+		$info['file'] = $_FILES['document'];
+		$info['schedule'] = $_POST['schedule'];
+		$info['description'] = $_POST['description'];
+		$info['destination'] = $this->generateFilePath($info['file'], $_SESSION['id'], $info['schedule']);
+		$info['date_submitted'] = date("m/d/y : H:i:s", time());
+
+		$this->model_files->replace_file($info);
+
+		return true;
 	}
 
 	function delete(){
@@ -69,10 +84,13 @@ class Upload{
    		if(!file_exists('../files/'.str_replace(':', ' ', $schedule))){
    			mkdir('../files/'.str_replace(':', ' ', $schedule));
    			mkdir('../files/'.str_replace(':', ' ', $schedule).'/'.$name['last_name'].', '.$name['first_name'].' '.$name['middle_name']);
-   			return true;
+   			
    		}else{
-   			return false;
+   			if(!file_exists('../files/'.str_replace(':', ' ', $schedule).'/'.$name['last_name'].', '.$name['first_name'].' '.$name['middle_name'])){
+   				mkdir('../files/'.str_replace(':', ' ', $schedule).'/'.$name['last_name'].', '.$name['first_name'].' '.$name['middle_name']);	
+   			}
+	
    		}
-
+   		
    	}
 }

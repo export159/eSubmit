@@ -51,7 +51,6 @@ class Model_files extends PDO_Connector{
 
 	function upload_file($info){
 		try{
-			print_r($info);
 			$sql = 'INSERT INTO tbl_submitted_files(student_id, file_name, destination, schedule, date_submitted, description) VALUES(?,?,?,?,?,?)';
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindParam(1, $info['student_id']);
@@ -64,6 +63,10 @@ class Model_files extends PDO_Connector{
 		}catch(PDOExeption $e){
 			print_r($e);
 		}
+	}
+
+	function replace_file($file){
+
 	}
 
 	function remove_file($id){

@@ -1,9 +1,9 @@
 <div>&copy FePO Programmers All rights Reseved 2015</div>
 </body>
 <script type="text/javascript" src="../public/js/jquery.js"></script>
-<script type="text/javascript" src="../public/js/npm.js"></script>
 <script type="text/javascript" src="../public/js/bootstrap.js"></script>
 <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../public/js/npm.js"></script>
 <!-- user defined javascripts -->
 <script type="text/javascript" src="../public/js/validations.js"></script>
 <script type="text/javascript" src="../public/js/view.js"></script>

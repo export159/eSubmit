@@ -1,6 +1,7 @@
-function resubmit(file){
+function show_resubmit_modal(file){
 	
-	$('#f-schedule').find('.col-sm-10').html('<input class="form-control" name="schedule" readonly="" value="'+file["schedule"]+'" />');
+	$('#f-schedule').find('.col-sm-10').html('<input type="text" class="form-control" name="schedule" readonly="" value="'+file["schedule"]+'" />');
+	$('#f-schedule').find('.col-sm-10').append('<input type="hidden" class="form-control" name="id" value="'+file["id"]+'" />');
 	$('#f-description').find('textarea[name="description"]').html(file['description'])
 	$('#modal-resubmit').modal('toggle')
 }
