@@ -5,6 +5,10 @@ function show_resubmit_modal(file){
 	$('#f-description').find('textarea[name="description"]').html(file['description'])
 	$('#modal-resubmit').modal('toggle')
 }
+function resubmit(form){
+	validation = validate_upload(form);	
+
+}
 
 function delete_file(id){
 

@@ -85,3 +85,8 @@ function signup(form){
 	}
 
 }
+
+//--- validation for file upload ---//
+function validate_upload(form){
+	schedule = $(form).find();
+}
