@@ -1,0 +1,13 @@
+After working really hard I finally solved this problem. I have no idea why it occurred in the first place but looks like Ubisoft games have a habit of messing up registry entries when installing. Here's what you do:
+
+- Run Regedit
+
+- Find the folder: HKEY_LOCAL_MACHINE\SOFTWARE\Ubisoft\Assassin's Creed 3, and make sure the path in InstallDir and the Version number are correct.
+
+- Create a new key here called 1.01 (or your version no.) and inside that new key double click on (Default) and enter 1.01 (or your version no.) under "Value Data"
+
+- Then go to HKEY_LOCAL_MACHINE\Software\Wow6432Node\Microsoft\ Windows\CurrentVersion\Uninstall
+
+- Create a new key in this folder named exactly this: {9D15E813-0C26-41E7-ABC5-3EB06FF1B3CF}. 
+
+- Then inside that new key, create a new string named DisplayVersion, and set it value to the version of the game you have (1.00, 1.01, 1.02). Then launch the update file (1.01, 1.02, 1.03) and it should work.

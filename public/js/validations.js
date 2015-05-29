@@ -87,6 +87,64 @@ function signup(form){
 }
 
 //--- validation for file upload ---//
-function validate_upload(form){
-	schedule = $(form).find();
+function validate_upload(){
+	$('body').on('submit','#upload-form', function(evt){
+		error_counter = 0;
+
+		
+		formData = new FormData($(this)[0]);
+		file = $('input[name="document"]').val();
+		schedule = $('select[name="schedule"]').val();
+		//file = JSON.stringify(file);
+		if(schedule == 0){
+			$('#schedule').addClass('has-error');
+			error_counter++;
+		}
+		if(file === ""){
+			$('#document').addClass('has-error');	
+			error_counter++;
+		}
+
+		//filename = file.match(/[^\/\\]+$/);
+		//console.log(filename[0]);
+		if(error_counter == 0){
+			$.ajax({
+				url: '/esubmit/controller/upload.php?action=submit',
+				data: formData,
+				type: 'POST',
+				async: false,
+		     	cache: false,
+		     	contentType: false,
+		     	enctype: 'multipart/form-data',
+		     	processData: false,
+				success: function(e){
+					
+					//console.log(e);
+					/*
+					if(e === 'false'){
+						//return true;
+					}else{
+						alert("The file already exist!");
+						$(form).find('button').button('reset');	
+					}
+					*/
+					console.log(e);
+					if(e === 'false'){
+						alert('File already exist, aborting upload');
+					}else{
+
+						alert('Upload Successful!');
+					}
+					
+				}
+			});
+			$(this).find('button').button('reset');	
+			return false;
+		}else{
+			$(this).find('button').button('reset');
+			return false;	
+		}
+		
+	});
+	
 }

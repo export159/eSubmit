@@ -3,12 +3,13 @@
 	<head>
 		<title>eSubmit</title>
 		<!-- Bootstrap stylesheets -->
-		<link rel="stylesheet" type="text/css" href="../public/css/bootstrap-theme.css">
-		<link rel="stylesheet" type="text/css" href="../public/css/bootstrap-theme.css.map">
-		<link rel="stylesheet" type="text/css" href="../public/css/bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="../public/css/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="../public/css/bootstrap.css.map">
-		<link rel="stylesheet" type="text/css" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-theme.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-theme.css.map">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap.css.map">
+    <link rel="stylesheet" type="text/css" href="../public/css/bootstrap.min.css">
 
 
 	</head>

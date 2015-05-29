@@ -35,11 +35,13 @@
 		}
 		// ---- end ------------------//
 
-		$('.btn').on('click', function () {
+		$('body').on('click','.btn', function () {
     		$btn = $(this).button('loading')
     		// business logic...
     		
   		})
+
+  		validate_upload();
 	});
 </script>
 </html>
