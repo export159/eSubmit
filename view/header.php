@@ -72,7 +72,7 @@
 		<?php if($session == null): ?>
 		<!-- modals -->
 		<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<form class="form form-horizontal" action="../controller/users.php?action=login" method="POST" onsubmit="login(this); return false;">
+		<form class="form form-horizontal login-form" action="../controller/users.php?action=login" method="POST" onsubmit="login(this); return false;">
   			<div class="modal-dialog modal-sm">
     			<div class="modal-content">
     				<div class="modal-header">
@@ -86,9 +86,23 @@
               <span id="container-warning" class="bg-danger">
                
               </span>
-      					<div id="f-student-number" class="form-group">
+              <div id="f-login-signup-as" class="form-group">
+                  <div class="col-sm-10">
+                    <select class="form-control login-signup-as" name="login-signup-as" data-value="login-form">
+                    <option value="0"> Login up as .... </option>
+                      <option value="student">
+                        Student
+                      </option>
+                      <option value="teacher">
+                        Teacher
+                      </option>
+                    </select>
+   
+                  </div>
+                </div>
+      				<div id="f-student-number" class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" name="student_number" class="form-control" placeholder="Enter your student no.">
+    							<input id="id-field" type="text" name="number" class="form-control user-fields" placeholder="Enter student no." disabled>
     						</div>
   						</div>
   		
@@ -96,7 +110,7 @@
       				<div class="modal-footer">
       					<div class="form-group">
     						<div class="col-sm-offset-2 col-sm-10">
-      							<button id="btn-login" type="submit" class="btn btn-default" data-loading-text="Logging in ...." autocomplete="off">Login</button>
+      							<button id="btn-login" type="submit" class="btn btn-default user-fields" data-loading-text="Logging in ...." autocomplete="off" disabled>Login</button>
     						</div>
   						</div>
       				</div>
@@ -120,7 +134,7 @@
                 <span id="container-warning" class="bg-danger">
                
                 </span>
-                <div id="f-student-number" class="form-group">
+                <div id="f-login-signup-as" class="form-group">
                   <div class="col-sm-10">
                     <select class="form-control login-signup-as" name="login-signup-as" data-value="signup-form">
                     <option value="0"> Sign up as .... </option>

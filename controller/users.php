@@ -25,14 +25,21 @@ class Users{
 	}
 
 	function login(){
-		$student_id = $_POST['student_number'];
+		$user_id = $_POST['number'];
 		$id = null;
-		$id = $this->model_student->login($student_id);
+		if($_POST['type'] == 'student'){
+			$id = $this->model_student->login($user_id);
+			$_SESSION['type'] = 'student';
+		}else if($_POST['type'] == 'teacher'){
+			$id = $this->model_teacher->login($user_id);
+			$_SESSION['type'] = 'teacher';
+		}
+		
 
 		if($id != null){
 			$_SESSION['id'] = $id;
 		}
-		return $id;
+		echo $id;
 		//header("location: index.php");
 	}
 	function signup(){

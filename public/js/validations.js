@@ -1,17 +1,19 @@
 //--- login/signup validations ---//
 function login(form){
-	student_id = $(form).find('input[name="student_number"]').val();
+	login_type = $(form).find('select[name="login-signup-as"]').val();
+	id = $(form).find('input[name="number"]').val();
 
-	if(student_id == ""){
+	if(id == ""){
 		$(form).find('#container-warning').html('<p class="text-danger">Student number is empty!</p>');
 		$(form).find('#container-warning').addClass('bg-danger');
 		$(form).find('#f-student-number').addClass('has-error');
 		$(form).find('button').button('reset');
 	}else{
 		$.ajax({
-			url:'/esubmit/controller/student.php?action=login',
+			url:'/esubmit/controller/users.php?action=login',
 			data:{
-				'student_number' : student_id
+				'type' : login_type,
+				'number' : id
 			},
 			type: 'POST',
 			success: function(e){
