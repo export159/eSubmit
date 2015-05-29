@@ -32,12 +32,14 @@ function login(form){
 }
 
 function signup(form){
-	student_id = $(form).find('input[name="student_number"]').val();
+	signup_type = $(form).find('select[name="login-signup-as"]').val();
+	id = $(form).find('input[name="number"]').val();
 	first_name = $(form).find('input[name="first_name"]').val();
 	middle_name = $(form).find('input[name="middle_name"]').val();
 	last_name = $(form).find('input[name="last_name"]').val();
+	console.log(signup_type);
 	error_counter = 0;
-	if(student_id == ""){
+	if(id == ""){
 		$(form).find('#f-student-number').addClass('has-error');
 		$(form).find('#container-warning').append('<p class="text-danger">Student number is empty!</p>');
 		error_counter++;
@@ -60,9 +62,10 @@ function signup(form){
 	
 	if(error_counter == 0){
 		$.ajax({
-			url:'/esubmit/controller/student.php?action=signup',
+			url:'/esubmit/controller/users.php?action=signup',
 			data:{
-				'student_number' : student_id,
+				'type' : signup_type,
+				'number' : id,
 				'first_name' : first_name,
 				'middle_name' : middle_name,
 				'last_name' : last_name
@@ -78,6 +81,7 @@ function signup(form){
 					$(form).find('#f-student-number').addClass('has-error');
 					$(form).find('button').button('reset');
 				}
+
 			}
 		});
 	}else{

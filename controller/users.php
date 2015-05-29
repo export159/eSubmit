@@ -1,13 +1,15 @@
 <?php
 require_once '../model/model_student.php';
+require_once '../model/model_teacher.php';
 
-new Student();
+new Users();
 
-class Student{
+class Users{
 	private $model_student;
 	public function __construct(){
 		session_start();
 		$this->model_student = new Model_student();
+		$this->model_teacher = new Model_teacher();
 		if($_SESSION['id'] == "" || $_GET['action'] == 'logout'){
 			if($_GET['action'] == 'login')
 				$this->login();
@@ -19,6 +21,7 @@ class Student{
 			echo $_SESSION['id'];
 			echo 'wahaha';
 		}
+
 	}
 
 	function login(){
@@ -29,14 +32,27 @@ class Student{
 		if($id != null){
 			$_SESSION['id'] = $id;
 		}
-		echo $id;
+		return $id;
 		//header("location: index.php");
 	}
 	function signup(){
 		$credentials = $_POST;
-
-		if($this->model_student->add_student($credentials)){
-			$id = $this->model_student->login($credentials['student_number']);
+		$status = null;
+		if($_POST['type'] == 'student'){
+			$status = $this->model_student->add_student($credentials);
+		}else if($_POST['type'] == 'teacher'){
+			$status = $this->model_teacher->add_teacher($credentials);
+		}
+		if($status){
+			$id = 0;
+			if($_POST['type'] == 'student'){
+				$id = $this->model_student->login($credentials['number']);
+				$_SESSION['type'] = 'student';
+			}else if($_POST['type'] == 'teacher'){
+				$id = $this->model_teacher->login($credentials['number']);
+				$_SESSION['type'] = 'teacher';
+			}
+			
 
 			if($id != null){
 				$_SESSION['id'] = $id;
@@ -50,6 +66,7 @@ class Student{
 
 	function logout(){
 		session_unset('id');
+		session_unset('teacher');
 		header("location: index.php");
 	}
 }

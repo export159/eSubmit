@@ -60,7 +60,7 @@
 			<?php else: ?>
 				<li>
           
-					<a href="/esubmit/controller/student.php?action=logout" id="btn-signup" data-toggle="modal">
+					<a href="/esubmit/controller/users.php?action=logout" id="btn-signup" data-toggle="modal">
             <i class="glyphicon glyphicon-log-out"></i> 
             Logout
           </a>
@@ -72,7 +72,7 @@
 		<?php if($session == null): ?>
 		<!-- modals -->
 		<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<form class="form form-horizontal" action="../controller/student.php?action=login" method="POST" onsubmit="login(this); return false;">
+		<form class="form form-horizontal" action="../controller/users.php?action=login" method="POST" onsubmit="login(this); return false;">
   			<div class="modal-dialog modal-sm">
     			<div class="modal-content">
     				<div class="modal-header">
@@ -106,7 +106,7 @@
 		</div>
 
 		<div class="modal fade" id="modal-signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<form class="form form-horizontal" action="../controller/student.php?action=signup" method="POST" onsubmit="signup(this); return false;">
+		<form class="form form-horizontal signup-form" action="../controller/users.php?action=signup" method="POST" onsubmit="signup(this); return false;">
   			<div class="modal-dialog modal-sm">
     			<div class="modal-content">
     				<div class="modal-header">
@@ -120,27 +120,41 @@
                 <span id="container-warning" class="bg-danger">
                
                 </span>
+                <div id="f-student-number" class="form-group">
+                  <div class="col-sm-10">
+                    <select class="form-control login-signup-as" name="login-signup-as" data-value="signup-form">
+                    <option value="0"> Sign up as .... </option>
+                      <option value="student">
+                        Student
+                      </option>
+                      <option value="teacher">
+                        Teacher
+                      </option>
+                    </select>
+   
+                  </div>
+                </div>
       					<div id="f-student-number" class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" name="student_number" class="form-control" placeholder="Enter student no.">
+    							<input id="id-field" type="text" name="number" class="form-control user-fields" placeholder="Enter student no." disabled>
  
     						</div>
   						</div>
               <div class="form-group">
     						<div id="f-fname" class="col-sm-10">
-    							<input type="text" name="first_name" class="form-control" placeholder="Enter first name">
+    							<input type="text" name="first_name" class="form-control user-fields" placeholder="Enter first name" disabled>
  
     						</div>
   						</div>
               <div id="f-mname" class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" name="middle_name" class="form-control" placeholder="Enter middle name">
+    							<input type="text" name="middle_name" class="form-control user-fields" placeholder="Enter middle name" disabled>
  
     						</div>
   						</div>
               <div id="f-lname" class="form-group">
     						<div class="col-sm-10">
-    							<input type="text" name="last_name" class="form-control" placeholder="Enter last name">
+    							<input type="text" name="last_name" class="form-control user-fields" placeholder="Enter last name" disabled>
  
     						</div>
   						</div>
@@ -149,7 +163,7 @@
       				<div class="modal-footer">
       					<div class="form-group">
     						<div class="col-sm-offset-2 col-sm-10">
-      							<button type="submit" class="btn btn-default" data-loading-text="Signing up ...." autocomplete="off">Signup</button>
+      							<button type="submit" class="btn btn-default user-fields" data-loading-text="Signing up ...." autocomplete="off" disabled>Signup</button>
     						</div>
   						</div>
       				</div>

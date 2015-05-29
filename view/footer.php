@@ -39,7 +39,22 @@
     		$btn = $(this).button('loading')
     		// business logic...
     		
-  		})
+  		});
+  		// logging in / signing up as
+  		$('body').on('change', '.login-signup-as', function(e){
+  			value = $(this).val();
+  			form = $(this).data('value');
+  			if(value == 0){
+  				$('.'+form).find('.user-fields').attr('disabled','');
+  			}else{
+  				$('.'+form).find('.user-fields').removeAttr('disabled');
+  				if(value == 'teacher'){
+  					$('.'+form).find('#id-field').attr('placeholder', 'Enter teacher no');
+  				}else{
+  					$('.'+form).find('#id-field').attr('placeholder', 'Enter student no');
+  				}
+  			}
+  		});
 
   		validate_upload();
 	});
