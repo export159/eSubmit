@@ -29,12 +29,14 @@
           </a>
 				</li>
 				<?php if($session != null): ?>
-				<li id="tab-submit" role="presentation">
-					<a href="upload.php" role="tab">
-            <i class="glyphicon glyphicon-upload"></i> 
-            Submit files
-          </a>
-				</li>
+          <?php if($_SESSION['type'] == 'student'): ?>
+  				<li id="tab-submit" role="presentation">
+  					<a href="upload.php" role="tab">
+              <i class="glyphicon glyphicon-upload"></i> 
+              Submit files
+            </a>
+  				</li>
+          <?php endif; ?>
 				<li id="tab-view" role="presentation">
 					<a href="view.php" role="tab">
             <i class="glyphicon glyphicon-list"></i> 

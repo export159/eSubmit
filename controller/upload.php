@@ -44,6 +44,7 @@ class Upload{
 		$info['date_submitted'] = date("m/d/y : H:i:s", time());
 
 		if($this->checkFile($info['schedule'], $info['destination'])){
+		//if($this->checkFile($info['schedule'], $info['file']['name'])){
 			echo 'false';
 		}else{
 			move_uploaded_file($info['file']['tmp_name'], $info['destination']);
@@ -53,14 +54,15 @@ class Upload{
 		//header("location: upload.php");;
 	}
 	function checkFile($schedule, $path){
+	//function checkFile($schedule, $filename){
 
 		
 		//$path = $this->generateFilePath($filename, $_SESSION['id'], $schedule);
-		//echo $path;
+
 		if(file_exists($path)){
-			return 'true';
+			return true;
 		}else{
-			return 'false';
+			return false;
 		}
 	}
 

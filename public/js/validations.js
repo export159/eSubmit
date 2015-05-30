@@ -134,13 +134,14 @@ function validate_upload(){
 						$(form).find('button').button('reset');	
 					}
 					*/
-					console.log(e);
+					
 					if(e === 'false'){
 						alert('File already exist, aborting upload');
 					}else{
 
 						alert('Upload Successful!');
 					}
+
 					
 				}
 			});

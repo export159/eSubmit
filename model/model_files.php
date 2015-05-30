@@ -10,9 +10,15 @@ class Model_files extends PDO_Connector{
 	function view_submitted_files($student_no){
 		$result = null;
 		$counter = 0;
+		$stmt = null;
 		try{
-			$stmt = $this->dbh->prepare('SELECT id, file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files WHERE student_id = ? ORDER BY id desc');
-			$stmt->bindParam(1, $student_no);
+			if($_SESSION['type'] == 'teacher'){
+				$stmt = $this->dbh->prepare('SELECT id, file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files ORDER BY id desc');
+			}else if($_SESSION['type'] == 'student'){
+				$stmt = $this->dbh->prepare('SELECT id, file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files WHERE student_id = ? ORDER BY id desc');
+				$stmt->bindParam(1, $student_no);
+			}
+			
 			$stmt->execute();
 
 			while($rs = $stmt->fetch()){
@@ -51,6 +57,7 @@ class Model_files extends PDO_Connector{
 
 	function upload_file($info){
 		try{
+			echo 'model_files';
 			$sql = 'INSERT INTO tbl_submitted_files(student_id, file_name, destination, schedule, date_submitted, description) VALUES(?,?,?,?,?,?)';
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindParam(1, $info['student_id']);
