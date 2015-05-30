@@ -11,7 +11,7 @@ class Upload{
 		session_start();
 		$this->model_student = new Model_student();
 		$this->model_files = new Model_files();
-		if($_SESSION['id'] != null){
+		if($_SESSION['id'] != null && $_SESSION['type'] == 'student' || $_GET['action'] == 'remarks'){
 			if(!isset($_GET['action'])){
 				$this->index();
 			}else if($_GET['action'] == 'submit'){
@@ -20,8 +20,8 @@ class Upload{
 				$this->resubmit();
 			}else if($_GET['action'] == 'delete'){
 				$this->delete();
-			}else if($_GET['action'] == 'check'){
-				$this->checkFIle();
+			}else if($_GET['action'] == 'remarks'){
+				$this->addRemarks();
 			}
 		}else{
 			echo 'wahahaha';
@@ -86,6 +86,11 @@ class Upload{
 		$this->model_files->remove_file($id);
 	}
 
+	function addRemarks(){
+		$this->model_files->add_remarks($_POST);
+		
+		echo 'ok';
+	}
 
 	function generateFilePath($filename, $id, $schedule){
 		$name = $this->model_student->getStudent($id);

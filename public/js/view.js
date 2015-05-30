@@ -26,3 +26,49 @@ function delete_file(id){
 		});
 	}
 }
+
+function remarks(){
+	//showing the remarks modal
+	$('body').on('click', '.add-remark-btn', function(){
+		$('input[name="id"]').val($(this).data('id'));
+		$('#modal-remarks').modal('toggle');
+	});
+
+	//submitting the remarks
+	$('body').on('submit', '.remarks-form', function(){
+		formData = new FormData($(this)[0]);
+		action = $(this).attr('action');
+		console.log(action);
+		
+		if($('textarea[name="remarks"]').val() == ""){
+			$(this).find('#f-remarks').addClass('has-error');
+			$(this).find('#container-warning').append('<p class="text-danger">Remarks is empty!</p>');
+			
+		}else{
+			$.ajax({
+				url : action,
+				data: formData,
+				type: 'POST',
+		     	cache: false,
+		     	contentType: false,
+		     	processData: false,
+				success: function(e){
+					
+					window.location.reload(true);
+
+					/*
+					$('#modal-remarks').modal('toggle');
+					$(this).find('input').val('');
+					$(this).find('button').button('reset');
+					*/
+
+				}
+			});
+		}
+
+		
+
+
+		return false;
+	});
+}

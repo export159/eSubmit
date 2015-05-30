@@ -1,4 +1,4 @@
-<div>&copy FePO Programmers All rights Reseved 2015</div>
+<div class="text-center">&copy FePO -- All rights Reseved 2015</div>
 </body>
 <script type="text/javascript" src="../public/js/jquery.js"></script>
 <script type="text/javascript" src="../public/js/bootstrap.js"></script>
@@ -57,6 +57,7 @@
   		});
 
   		validate_upload();
+  		remarks();
 	});
 </script>
 </html>

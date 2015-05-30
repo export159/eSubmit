@@ -13,14 +13,14 @@ class Model_files extends PDO_Connector{
 		$stmt = null;
 		try{
 			if($_SESSION['type'] == 'teacher'){
-				$stmt = $this->dbh->prepare('SELECT id, file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files ORDER BY id desc');
+				$stmt = $this->dbh->prepare('SELECT f.id, s.first_name, s.middle_name, s.last_name, f.file_name, f.schedule, f.date_submitted, f.description, f.remarks FROM tbl_submitted_files as f, tbl_student as s WHERE f.student_id = s.student_no ORDER BY s.last_name asc');
 			}else if($_SESSION['type'] == 'student'){
 				$stmt = $this->dbh->prepare('SELECT id, file_name, schedule, date_submitted, description, remarks FROM tbl_submitted_files WHERE student_id = ? ORDER BY id desc');
 				$stmt->bindParam(1, $student_no);
 			}
 			
 			$stmt->execute();
-
+			/*
 			while($rs = $stmt->fetch()){
 				$result[$counter]['id'] = $rs['id'];
 				$result[$counter]['file_name'] = $rs['file_name'];
@@ -31,14 +31,16 @@ class Model_files extends PDO_Connector{
 
 				$counter++;
 			}
+			*/
 
-
-		}catch(Exception $e){
+		}catch(PDOException $e){
 			print_r($e);
 		}
-		return $result;
-		
 		$this->close();
+		
+		return $stmt->fetchAll(PDO::FETCH_ASSOC);
+		//return $result;
+		
 	}
 	function get_file_where_id($id){
 		try{
@@ -81,6 +83,20 @@ class Model_files extends PDO_Connector{
 			$sql = 'DELETE FROM tbl_submitted_files WHERE id = ?';
 			$stmt = $this->dbh->prepare($sql);
 			$stmt->bindParam(1, $id);
+			$stmt->execute();
+		}catch(PDOException $e){
+			print_r($e);
+		}
+	}
+
+
+	//adding remarks
+	function add_remarks($data){
+		try{
+			$sql = 'UPDATE tbl_submitted_files SET remarks = ? WHERE id = ?';
+			$stmt = $this->dbh->prepare($sql);
+			$stmt->bindParam(1, $data['remarks']);
+			$stmt->bindParam(2, $data['id']);
 			$stmt->execute();
 		}catch(PDOException $e){
 			print_r($e);
